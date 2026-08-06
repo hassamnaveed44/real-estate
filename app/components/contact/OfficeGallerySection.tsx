@@ -10,7 +10,7 @@ export default function OfficeGallerySection() {
         {/* Main Image Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[16px] md:gap-[20px] w-full">
           
-          {/* Left Container */}
+          {/* Left Container (Two stacked tall images) */}
           <div className="grid grid-cols-2 lg:flex lg:flex-col gap-[16px] md:gap-[20px] w-full">
             <div className="relative w-full h-[160px] sm:h-[300px] lg:h-[236px] rounded-[10px] overflow-hidden border border-[#262626]">
               <Image 
@@ -30,9 +30,9 @@ export default function OfficeGallerySection() {
             </div>
           </div>
 
-          {/* Right Container */}
-          <div className="grid grid-cols-2 lg:grid-rows-2 gap-[16px] md:gap-[20px] w-full">
-            {/* Top Wide Image - Hidden on mobile, visible on desktop via hidden lg:block */}
+          {/* Right Container (Top wide image + Bottom two side-by-side images) */}
+          <div className="flex flex-col gap-[16px] md:gap-[20px] w-full">
+            {/* Top Wide Image - Hidden on mobile, visible on big screens */}
             <div className="relative hidden lg:block w-full h-[236px] rounded-[10px] overflow-hidden border border-[#262626]">
               <Image 
                 src="/images/contact3.png" 
@@ -43,21 +43,23 @@ export default function OfficeGallerySection() {
             </div>
 
             {/* Bottom Two Side-by-Side Images */}
-            <div className="relative w-full h-[160px] sm:h-[230px] lg:h-[236px] rounded-[10px] overflow-hidden border border-[#262626]">
-              <Image 
-                src="/images/contact4.png" 
-                alt="Team Members" 
-                fill 
-                className="object-cover"
-              />
-            </div>
-            <div className="relative w-full h-[160px] sm:h-[230px] lg:h-[236px] rounded-[10px] overflow-hidden border border-[#262626]">
-              <Image 
-                src="/images/contact5.png" 
-                alt="Corporate Executives" 
-                fill 
-                className="object-cover"
-              />
+            <div className="grid grid-cols-2 gap-[16px] md:gap-[20px] w-full">
+              <div className="relative w-full h-[160px] sm:h-[230px] lg:h-[236px] rounded-[10px] overflow-hidden border border-[#262626]">
+                <Image 
+                  src="/images/contact4.png" 
+                  alt="Team Members" 
+                  fill 
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative w-full h-[160px] sm:h-[230px] lg:h-[236px] rounded-[10px] overflow-hidden border border-[#262626]">
+                <Image 
+                  src="/images/contact5.png" 
+                  alt="Corporate Executives" 
+                  fill 
+                  className="object-cover"
+                />
+              </div>
             </div>
           </div>
 
