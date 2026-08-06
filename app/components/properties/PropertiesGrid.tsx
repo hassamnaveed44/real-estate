@@ -99,7 +99,7 @@ export default function PropertiesGrid() {
         
         {/* Section Header */}
         <div className="flex flex-col space-y-3 sm:space-y-4">
-          <div className="flex items-center gap-1.5 text-[#703BF7]">
+          <div className="flex items-center gap-1.5 text-gray-700">
             <span className="text-xl">✦</span>
             <span className="text-xs">✦</span>
             <span className="text-sm">✦</span>
