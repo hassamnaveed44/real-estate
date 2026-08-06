@@ -1,6 +1,7 @@
 import React from "react";
-import Footer from "@/app/components/layout/Footer";
 import PropertyDetailsHero from "@/app/components/properties-detail/PropertyDetailsHero";
+import CtaBanner from "@/app/components/home/CtaBanner";
+import PropertyDescriptionAndAmenities from "@/app/components/properties-detail/PropertyDescriptionAndAmenities";
 
 export default function PropertyDetailsPage({ params }: { params: { id: string } }) {
   // You can fetch or filter property data based on params.id here if needed
@@ -10,8 +11,9 @@ export default function PropertyDetailsPage({ params }: { params: { id: string }
       
       {/* Property Details Section */}
       <PropertyDetailsHero />
+      <PropertyDescriptionAndAmenities />
 
-      <Footer />
+    <CtaBanner />
     </main>
   );
 }
