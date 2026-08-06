@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "@/app/components/layout/Header";
 import Footer from "@/app/components/layout/Footer";
 import PropertyDetailsHero from "@/app/components/properties-detail/PropertyDetailsHero";
 
@@ -8,7 +7,6 @@ export default function PropertyDetailsPage({ params }: { params: { id: string }
   
   return (
     <main className="min-h-screen bg-[#141414] text-white">
-      <Header />
       
       {/* Property Details Section */}
       <PropertyDetailsHero />
