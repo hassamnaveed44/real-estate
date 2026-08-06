@@ -3,6 +3,8 @@ import PropertyDetailsHero from "@/app/components/properties-detail/PropertyDeta
 import CtaBanner from "@/app/components/home/CtaBanner";
 import PropertyDescriptionAndAmenities from "@/app/components/properties-detail/PropertyDescriptionAndAmenities";
 import PropertyInquiryForm from "@/app/components/properties-detail/PropertyInquiryForm";
+import ComprehensivePricing from "@/app/components/properties-detail/ComprehensivePricing";
+import Faqs from "@/app/components/home/Faqs";
 
 export default function PropertyDetailsPage({ params }: { params: { id: string } }) {
   // You can fetch or filter property data based on params.id here if needed
@@ -14,6 +16,8 @@ export default function PropertyDetailsPage({ params }: { params: { id: string }
       <PropertyDetailsHero />
       <PropertyDescriptionAndAmenities />
       <PropertyInquiryForm />
+      <ComprehensivePricing />
+      <Faqs />
 
     <CtaBanner />
     </main>

@@ -57,12 +57,19 @@ export default function Faqs() {
   );
 
   return (
-    <section className="w-full bg-[#141414] text-white py-16 lg:py-24 px-6 sm:px-10 lg:px-16 border-t border-[#262626]">
+    <section className="w-full bg-[#141414] text-white py-16 lg:py-24 px-6 sm:px-10 lg:px-16">
       <div className="max-w-[1440px] mx-auto space-y-12">
         
         {/* Header Row */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div className="space-y-2 max-w-3xl">
+          <div className="space-y-3 max-w-3xl">
+            {/* Star-like sparkles motif */}
+            <div className="flex items-center gap-1">
+              <span className="text-gray-600 text-sm">✦</span>
+              <span className="text-gray-600 text-xs opacity-75">✦</span>
+              <span className="text-gray-600 text-[10px] opacity-50">✦</span>
+            </div>
+
             <h2 className="text-[32px] sm:text-[38px] lg:text-[42px] font-semibold tracking-tight text-white">
               Frequently Asked Questions
             </h2>
