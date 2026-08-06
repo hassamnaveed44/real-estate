@@ -41,7 +41,8 @@ export default function ServiceHero() {
       {/* Sub Container (Feature Card Row - Widened to 1720px) */}
       <div className="px-[162px] max-lg:px-[80px] max-md:px-[16px] py-[50px] max-md:py-[30px] flex justify-center">
         <div className="w-full max-w-[1720px] bg-[#141414] border border-[#262626] rounded-[12px] p-[20px] shadow-[0px_0px_0px_6px_#191919]">
-          <div className="grid grid-cols-4 max-lg:grid-cols-2 max-md:grid-cols-1 gap-[20px] justify-items-center">
+          {/* Changed max-md:grid-cols-1 to max-md:grid-cols-2 */}
+          <div className="grid grid-cols-4 max-lg:grid-cols-2 max-md:grid-cols-2 gap-[20px] justify-items-center">
             {features.map((item, index) => (
               <div
                 key={index}
