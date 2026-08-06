@@ -5,11 +5,7 @@ import Image from "next/image";
 import { 
   MapPin, 
   ChevronLeft, 
-  ChevronRight, 
-  Bed, 
-  Bath, 
-  Maximize2, 
-  CheckCircle2 
+  ChevronRight 
 } from "lucide-react";
 
 interface PropertyDetailsHeroProps {
@@ -27,7 +23,6 @@ interface PropertyDetailsHeroProps {
 }
 
 export default function PropertyDetailsHero({ property }: PropertyDetailsHeroProps) {
-  // Fallback default mock data matching "Seaside Serenity Villa" spec if no props are passed
   const data = property || {
     title: "Seaside Serenity Villa",
     location: "Malibu, California",
@@ -67,16 +62,15 @@ export default function PropertyDetailsHero({ property }: PropertyDetailsHeroPro
     setActiveImageIndex((prev) => (prev === data.images.length - 1 ? 0 : prev + 1));
   };
 
-  // Get current and secondary image for the 2-image desktop view
   const currentImg = data.images[activeImageIndex] || data.images[0];
   const nextImg = data.images[(activeImageIndex + 1) % data.images.length] || data.images[1];
 
   return (
     <section className="w-full bg-[#141414] py-[40px] px-4 sm:px-6 lg:px-[162px] font-['Urbanist'] text-white">
       {/* Top Title & Price Row */}
-      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-8">
-        <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-          <h1 className="text-[20px] sm:text-[24px] lg:text-[30px] font-semibold tracking-wide text-white">
+      <div className="flex flex-col items-start lg:flex-row lg:items-center lg:justify-between gap-4 mb-8">
+        <div className="flex flex-col items-start sm:flex-row sm:items-center gap-3">
+          <h1 className="text-[22px] sm:text-[24px] lg:text-[30px] font-semibold tracking-wide text-white">
             {data.title}
           </h1>
           <div className="inline-flex items-center gap-2 bg-[#1A1A1A] border border-[#262626] rounded-[8px] px-3 py-1.5 w-fit">
@@ -87,9 +81,9 @@ export default function PropertyDetailsHero({ property }: PropertyDetailsHeroPro
           </div>
         </div>
 
-        <div className="flex flex-col sm:items-end">
+        <div className="flex flex-row lg:flex-col items-center lg:items-end justify-between w-full lg:w-auto gap-2 pt-2 lg:pt-0 border-t lg:border-t-0 border-[#262626]">
           <span className="text-[14px] sm:text-[16px] text-[#999999] font-medium">Price</span>
-          <span className="text-[18px] sm:text-[20px] lg:text-[24px] font-semibold text-white">
+          <span className="text-[20px] sm:text-[20px] lg:text-[24px] font-semibold text-white">
             {data.price}
           </span>
         </div>
@@ -98,54 +92,59 @@ export default function PropertyDetailsHero({ property }: PropertyDetailsHeroPro
       {/* Gallery Container Card */}
       <div className="bg-[#1A1A1A] border border-[#262626] rounded-[12px] p-4 sm:p-6 lg:p-[50px] flex flex-col gap-6 lg:gap-[30px] mb-8">
         
-        {/* Thumbnail Strip */}
-        <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-none bg-[#141414] p-3 sm:p-[14px] lg:p-[20px] rounded-[12px]">
-          {data.images.map((img, idx) => {
-            const isSelected = idx === activeImageIndex;
-            return (
-              <button
-                key={idx}
-                onClick={() => setActiveImageIndex(idx)}
-                className={`relative flex-shrink-0 h-[50px] sm:h-[65px] lg:h-[94px] w-[70px] sm:w-[90px] lg:w-[130px] rounded-[8px] overflow-hidden transition-all ${
-                  isSelected ? "border-2 border-[#703BF7]" : "border border-[#262626]"
-                }`}
-              >
-                <Image
-                  src={img}
-                  alt={`Thumbnail ${idx + 1}`}
-                  fill
-                  className="object-cover"
-                />
-                {!isSelected && (
-                  <div className="absolute inset-0 bg-[rgba(10,10,10,0.5)] transition-opacity" />
-                )}
-              </button>
-            );
-          })}
+        {/* Main Images Display (Reordered: Big Image first on mobile via flex-col-reverse on mobile or DOM reordering) */}
+        <div className="flex flex-col-reverse lg:flex-col gap-6 lg:gap-[30px]">
+          
+          {/* Thumbnail Strip (Moved below main image on small screens) */}
+          <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-none bg-[#141414] p-3 sm:p-[14px] lg:p-[20px] rounded-[12px]">
+            {data.images.map((img, idx) => {
+              const isSelected = idx === activeImageIndex;
+              return (
+                <button
+                  key={idx}
+                  onClick={() => setActiveImageIndex(idx)}
+                  className={`relative flex-shrink-0 h-[50px] sm:h-[65px] lg:h-[94px] w-[70px] sm:w-[90px] lg:w-[130px] rounded-[8px] overflow-hidden transition-all ${
+                    isSelected ? "border-2 border-[#703BF7]" : "border border-[#262626]"
+                  }`}
+                >
+                  <Image
+                    src={img}
+                    alt={`Thumbnail ${idx + 1}`}
+                    fill
+                    className="object-cover"
+                  />
+                  {!isSelected && (
+                    <div className="absolute inset-0 bg-[rgba(10,10,10,0.5)] transition-opacity" />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Main Image Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-[30px]">
+            <div className="relative h-[250px] sm:h-[350px] lg:h-[583px] w-full rounded-[10px] overflow-hidden border border-[#262626]">
+              <Image
+                src={currentImg}
+                alt="Main property view 1"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="relative hidden lg:block h-[583px] w-full rounded-[10px] overflow-hidden border border-[#262626]">
+              <Image
+                src={nextImg}
+                alt="Main property view 2"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+
         </div>
 
-        {/* Main Images Display (2 side-by-side on desktop, 1 on mobile) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-[30px]">
-          <div className="relative h-[220px] sm:h-[350px] lg:h-[583px] w-full rounded-[10px] overflow-hidden border border-[#262626]">
-            <Image
-              src={currentImg}
-              alt="Main property view 1"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="relative hidden lg:block h-[583px] w-full rounded-[10px] overflow-hidden border border-[#262626]">
-            <Image
-              src={nextImg}
-              alt="Main property view 2"
-              fill
-              className="object-cover"
-            />
-          </div>
-        </div>
-
-        {/* Carousel Navigation Bar matching precise Figma dimensions */}
-        <div className="flex items-center justify-between w-[296px] h-[78px] bg-[#141414] border border-[#262626] rounded-[100px] p-[10px] gap-[10px] mx-auto">
+        {/* Carousel Navigation Bar */}
+        <div className="flex items-center justify-between w-full max-w-[296px] h-[78px] bg-[#141414] border border-[#262626] rounded-[100px] p-[10px] gap-[10px] mx-auto">
           <button
             onClick={handlePrev}
             style={{ width: "58px", height: "58px", borderRadius: "69px" }}
@@ -155,7 +154,6 @@ export default function PropertyDetailsHero({ property }: PropertyDetailsHeroPro
             <ChevronLeft style={{ width: "30px", height: "30px" }} className="text-white" />
           </button>
 
-          {/* Progress Indicator Segments container width: 140px, height: 5px, gap: 4px */}
           <div className="flex items-center gap-[4px] w-[140px] h-[5px] justify-center">
             {data.images.map((_, idx) => (
               <div
@@ -178,9 +176,6 @@ export default function PropertyDetailsHero({ property }: PropertyDetailsHeroPro
         </div>
 
       </div>
-
-      {/* Description and Amenities Cards Grid */}
-     
     </section>
   );
 }

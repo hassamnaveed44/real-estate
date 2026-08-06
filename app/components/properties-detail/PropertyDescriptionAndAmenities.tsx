@@ -28,14 +28,12 @@ export default function PropertyDescriptionAndAmenities({ property }: PropertyDe
 
   return (
     <section className="w-full bg-[#141414] py-[40px] px-4 sm:px-6 lg:px-[162px] font-['Urbanist'] text-white">
-      {/* Sub Container (1596px max width layout grid) */}
       <div className="max-w-[1596px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-[30px] items-start">
         
-        {/* Left Container: Description (items-start prevents it from stretching equal to the right card) */}
-        <div className="w-full bg-#262626 border border-[#262626] rounded-[12px] p-6 sm:p-8 lg:p-[50px] flex flex-col gap-[30px] lg:gap-[40px]">
+        {/* Left Container: Description */}
+        <div className="w-full bg-[#1A1A1A] border border-[#262626] rounded-[12px] p-5 sm:p-8 lg:p-[50px] flex flex-col gap-6 lg:gap-[40px]">
           
-          {/* Text Container */}
-          <div className="flex flex-col gap-[14px]">
+          <div className="flex flex-col gap-3">
             <h2 className="text-[20px] sm:text-[22px] lg:text-[24px] font-semibold text-white leading-[150%]">
               Description
             </h2>
@@ -44,32 +42,32 @@ export default function PropertyDescriptionAndAmenities({ property }: PropertyDe
             </p>
           </div>
 
-          {/* Sub Container / Stats Row */}
-          <div className="grid grid-cols-3 border-t border-[#262626] pt-[20px] gap-4">
+          {/* Stats Row */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 border-t border-[#262626] pt-5 gap-4">
             
-            <div className="flex flex-col gap-[10px]">
-              <div className="flex items-center gap-1.5 text-[#999999] text-[14px] sm:text-[16px] font-medium">
-                <Bed className="w-4 h-4 text-gray-400" />
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-1.5 text-[#999999] text-[13px] sm:text-[16px] font-medium">
+                <Bed className="w-4 h-4 text-gray-600" />
                 <span>Bedrooms</span>
               </div>
-              <span className="text-[18px] sm:text-[20px] lg:text-[24px] font-semibold text-white">
+              <span className="text-[20px] sm:text-[20px] lg:text-[24px] font-semibold text-white">
                 {String(data.bedrooms).padStart(2, '0')}
               </span>
             </div>
 
-            <div className="flex flex-col gap-[10px] border-x border-[#262626] px-2 sm:px-4">
-              <div className="flex items-center gap-1.5 text-[#999999] text-[14px] sm:text-[16px] font-medium">
-                <Bath className="w-4 h-4 text-gray-400" />
+            <div className="flex flex-col gap-2 border-l sm:border-x border-[#262626] pl-4 sm:px-4">
+              <div className="flex items-center gap-1.5 text-[#999999] text-[13px] sm:text-[16px] font-medium">
+                <Bath className="w-4 h-4 text-gray-600" />
                 <span>Bathrooms</span>
               </div>
-              <span className="text-[18px] sm:text-[20px] lg:text-[24px] font-semibold text-white">
+              <span className="text-[20px] sm:text-[20px] lg:text-[24px] font-semibold text-white">
                 {String(data.bathrooms).padStart(2, '0')}
               </span>
             </div>
 
-            <div className="flex flex-col gap-[10px] pl-2 sm:pl-4">
-              <div className="flex items-center gap-1.5 text-[#999999] text-[14px] sm:text-[16px] font-medium">
-                <Maximize2 className="w-4 h-4 text-gray-400" />
+            <div className="flex flex-col gap-2 col-span-2 sm:col-span-1 pt-2 sm:pt-0 border-t sm:border-t-0 border-[#262626] sm:pl-4">
+              <div className="flex items-center gap-1.5 text-[#999999] text-[13px] sm:text-[16px] font-medium">
+                <Maximize2 className="w-4 h-4 text-gray-600" />
                 <span>Area</span>
               </div>
               <span className="text-[16px] sm:text-[18px] lg:text-[20px] font-semibold text-white truncate">
@@ -81,14 +79,13 @@ export default function PropertyDescriptionAndAmenities({ property }: PropertyDe
         </div>
 
         {/* Right Container: Key Features and Amenities */}
-        <div className="w-full bg-#262626 border border-[#262626] rounded-[12px] p-6 sm:p-8 lg:p-[50px] flex flex-col gap-[30px] lg:gap-[40px]">
+        <div className="w-full bg-[#1A1A1A] border border-[#262626] rounded-[12px] p-5 sm:p-8 lg:p-[50px] flex flex-col gap-6 lg:gap-[40px]">
           
           <h2 className="text-[20px] sm:text-[22px] lg:text-[24px] font-semibold text-white leading-[150%]">
             Key Features and Amenities
           </h2>
 
-          {/* Inner Sub Container (List of Amenities) */}
-          <div className="flex flex-col gap-[14px] sm:gap-[16px]">
+          <div className="flex flex-col gap-3 sm:gap-[16px]">
             {data.amenities.map((amenity, index) => (
               <div
                 key={index}
