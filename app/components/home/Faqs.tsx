@@ -36,12 +36,31 @@ const allFaqs = [
     question: "What financing options are available for buyers?",
     answer: "We partner with trusted financial institutions to help you find competitive mortgage and loan rates.",
   },
+  {
+    id: "7",
+    question: "What makes Estatein different from other agencies?",
+    answer: "Our commitment to client satisfaction, extensive market knowledge, and cutting-edge tech set us apart.",
+  },
+  {
+    id: "8",
+    question: "How often are new property listings updated?",
+    answer: "Our database is updated in real-time to ensure you see the freshest properties available.",
+  },
+  {
+    id: "9",
+    question: "Can Estatein help with property management after purchase?",
+    answer: "Yes, we offer comprehensive property management services for investors and homeowners.",
+  },
+  {
+    id: "10",
+    question: "What is the typical timeline for closing a property deal?",
+    answer: "Closing timelines vary depending on financing and paperwork, typically ranging from 30 to 45 days.",
+  },
 ];
 
 export default function Faqs() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const itemsPerPage = 3;
-  const totalPages = Math.ceil(allFaqs.length / itemsPerPage);
+  const totalPages = allFaqs.length;
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev === 0 ? totalPages - 1 : prev - 1));
@@ -51,67 +70,130 @@ export default function Faqs() {
     setCurrentIndex((prev) => (prev === totalPages - 1 ? 0 : prev + 1));
   };
 
-  const currentFaqs = allFaqs.slice(
-    currentIndex * itemsPerPage,
-    (currentIndex + 1) * itemsPerPage
-  );
+  const currentFaq = allFaqs[currentIndex];
 
   return (
-    <section className="w-full bg-[#141414] text-white py-16 lg:py-24 px-6 sm:px-10 lg:px-16 border-t border-[#262626]">
+    <section className="w-full bg-[#141414] text-white py-16 lg:py-24 px-4 sm:px-10 lg:px-16">
       <div className="max-w-[1440px] mx-auto space-y-12">
         
         {/* Header Row */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div className="space-y-2 max-w-3xl">
-            <h2 className="text-[32px] sm:text-[38px] lg:text-[42px] font-semibold tracking-tight text-white">
+          <div className="space-y-3 max-w-3xl">
+            <div className="flex items-center gap-1">
+              <span className="text-gray-600 text-sm">✦</span>
+              <span className="text-gray-600 text-xs opacity-75">✦</span>
+              <span className="text-gray-600 text-[10px] opacity-50">✦</span>
+            </div>
+
+            <h2 className="text-[28px] sm:text-[38px] lg:text-[42px] font-semibold tracking-tight text-white leading-tight">
               Frequently Asked Questions
             </h2>
-            <p className="text-[15px] lg:text-[17px] font-medium text-[#999999] leading-relaxed">
-              Got questions? We&apos;ve got answers. Check out our FAQ section to find valuable insights about buying, selling, and working with Estatein.
+            <p className="text-[14px] lg:text-[17px] font-medium text-[#999999] leading-relaxed">
+              Find answers to common questions about Estatein&apos;s services, property listings, and the real estate process. We&apos;re here to provide clarity and assist you every step of the way.
             </p>
           </div>
 
+          {/* Desktop View All button */}
           <Link
             href="/faqs"
-            className="px-6 py-[16px] rounded-[10px] bg-[#1A1A1A] border border-[#262626] text-white font-medium text-[15px] hover:bg-[#222222] transition whitespace-nowrap self-start md:self-auto shadow-sm"
+            className="hidden lg:inline-flex px-6 py-[16px] rounded-[10px] bg-[#1A1A1A] border border-[#262626] text-white font-medium text-[15px] hover:bg-[#222222] transition whitespace-nowrap shadow-sm"
           >
             View All FAQ&apos;s
           </Link>
         </div>
 
-        {/* FAQ Cards Row (3 across) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {currentFaqs.map((faq) => (
-            <div
-              key={faq.id}
-              className="bg-[#141414] border border-[#262626] rounded-[12px] p-6 lg:p-8 flex flex-col justify-between space-y-6 hover:border-[#703BF7] transition-all shadow-md min-h-[300px]"
-            >
-              <div className="space-y-4">
-                <h3 className="text-[20px] lg:text-[22px] font-semibold text-white tracking-wide leading-snug">
-                  {faq.question}
-                </h3>
-                <p className="text-[15px] lg:text-[16px] font-medium text-[#999999] leading-relaxed line-clamp-3">
-                  {faq.answer}
-                </p>
-              </div>
+        {/* Desktop Grid View (3 across) */}
+        <div className="hidden lg:grid grid-cols-3 gap-6">
+          {[0, 1, 2].map((offset) => {
+            const faq = allFaqs[(currentIndex + offset) % allFaqs.length];
+            return (
+              <div
+                key={faq.id}
+                className="bg-[#141414] border border-[#262626] rounded-[12px] p-8 flex flex-col justify-between space-y-6 hover:border-[#703BF7] transition-all shadow-md min-h-[300px]"
+              >
+                <div className="space-y-4">
+                  <h3 className="text-[22px] font-semibold text-white tracking-wide leading-snug">
+                    {faq.question}
+                  </h3>
+                  <p className="text-[16px] font-medium text-[#999999] leading-relaxed line-clamp-3">
+                    {faq.answer}
+                  </p>
+                </div>
 
-              <div>
-                <Link
-                  href={`/faqs/${faq.id}`}
-                  className="inline-flex px-5 py-3 rounded-[10px] bg-[#1A1A1A] border border-[#262626] text-white font-medium text-[14px] hover:bg-[#222222] hover:border-[#703BF7] transition"
-                >
-                  Read More
-                </Link>
+                <div>
+                  <Link
+                    href={`/faqs/${faq.id}`}
+                    className="inline-flex px-5 py-3 rounded-[10px] bg-[#1A1A1A] border border-[#262626] text-white font-medium text-[14px] hover:bg-[#222222] hover:border-[#703BF7] transition"
+                  >
+                    Read More
+                  </Link>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        {/* Pagination Row */}
-        <div className="pt-6 border-t border-[#262626] flex items-center justify-between">
-          <div className="text-[16px] lg:text-[18px] font-medium">
-            <span className="text-white">0{currentIndex + 1}</span>
-            <span className="text-[#999999]"> of 0{totalPages}</span>
+        {/* Mobile Single Card View matching the exact requested screenshot layout */}
+        <div className="block lg:hidden space-y-6">
+          <div className="bg-[#141414] border border-[#262626] rounded-[12px] p-6 flex flex-col justify-between space-y-6 min-h-[260px]">
+            <div className="space-y-4">
+              <h3 className="text-[18px] sm:text-[20px] font-semibold text-white tracking-wide leading-snug">
+                {currentFaq.question}
+              </h3>
+              <p className="text-[14px] sm:text-[15px] font-medium text-[#999999] leading-relaxed">
+                {currentFaq.answer}
+              </p>
+            </div>
+
+            <div>
+              <Link
+                href={`/faqs/${currentFaq.id}`}
+                className="inline-flex px-5 py-3 rounded-[10px] bg-[#1A1A1A] border border-[#262626] text-white font-medium text-[14px] hover:bg-[#222222] transition"
+              >
+                Read More
+              </Link>
+            </div>
+          </div>
+
+          {/* Mobile Bottom Row: View All Button on Left, Arrows & Counter on Right */}
+          <div className="pt-4 border-t border-[#262626] flex items-center justify-between gap-4">
+            <Link
+              href="/faqs"
+              className="px-5 py-3 rounded-[10px] bg-[#1A1A1A] border border-[#262626] text-white font-medium text-[14px] hover:bg-[#222222] transition whitespace-nowrap"
+            >
+              View All FAQ&apos;s
+            </Link>
+
+            <div className="flex items-center gap-3">
+              <button
+                onClick={handlePrev}
+                className="w-12 h-12 rounded-full border border-[#262626] bg-[#1A1A1A] hover:bg-[#222222] flex items-center justify-center text-white transition shadow-sm"
+                aria-label="Previous FAQs"
+              >
+                <ArrowLeft className="w-5 h-5" />
+              </button>
+
+              <span className="text-[14px] font-medium whitespace-nowrap">
+                <span className="text-white">{String(currentIndex + 1).padStart(2, '0')}</span>
+                <span className="text-[#999999]"> of {String(totalPages).padStart(2, '0')}</span>
+              </span>
+
+              <button
+                onClick={handleNext}
+                className="w-12 h-12 rounded-full border border-[#262626] bg-[#1A1A1A] hover:bg-[#222222] flex items-center justify-center text-white transition shadow-sm"
+                aria-label="Next FAQs"
+              >
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop Pagination Row */}
+        <div className="hidden lg:flex pt-6 border-t border-[#262626] items-center justify-between">
+          <div className="text-[18px] font-medium">
+            <span className="text-white">{String(currentIndex + 1).padStart(2, '0')}</span>
+            <span className="text-[#999999]"> of {String(totalPages).padStart(2, '0')}</span>
           </div>
 
           <div className="flex items-center gap-3">

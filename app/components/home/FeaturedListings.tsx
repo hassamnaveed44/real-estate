@@ -166,7 +166,7 @@ export default function FeaturedListings() {
                 </div>
 
                 <Link
-                  href={`/properties/${property.id}`}
+                  href={`/propertydetails/${property.id}`}
                   className="px-4 lg:px-5 py-3.5 rounded-[10px] bg-[#703BF7] text-white font-medium text-[14px] lg:text-[15px] hover:bg-[#5e31d4] transition shadow-lg shadow-[#703BF7]/30 text-center whitespace-nowrap"
                 >
                   View Property Details
