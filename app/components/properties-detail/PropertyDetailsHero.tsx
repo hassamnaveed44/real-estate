@@ -80,7 +80,7 @@ export default function PropertyDetailsHero({ property }: PropertyDetailsHeroPro
             {data.title}
           </h1>
           <div className="inline-flex items-center gap-2 bg-[#1A1A1A] border border-[#262626] rounded-[8px] px-3 py-1.5 w-fit">
-            <MapPin className="w-4 h-4 text-[#703BF7]" />
+            <MapPin className="w-4 h-4 text-white" />
             <span className="text-[14px] sm:text-[16px] text-[#999999] font-medium whitespace-nowrap">
               {data.location}
             </span>
@@ -144,22 +144,23 @@ export default function PropertyDetailsHero({ property }: PropertyDetailsHeroPro
           </div>
         </div>
 
-        {/* Carousel Navigation Bar */}
-        <div className="flex items-center justify-between bg-[#141414] rounded-[100px] p-2 sm:p-2.5 lg:p-[10px] px-6">
+        {/* Carousel Navigation Bar matching precise Figma dimensions */}
+        <div className="flex items-center justify-between w-[296px] h-[78px] bg-[#141414] border border-[#262626] rounded-[100px] p-[10px] gap-[10px] mx-auto">
           <button
             onClick={handlePrev}
-            className="p-2 sm:p-2.5 lg:p-3 rounded-full border border-[#262626] bg-[#1A1A1A] hover:bg-[#262626] text-white transition-colors"
+            style={{ width: "58px", height: "58px", borderRadius: "69px" }}
+            className="flex items-center justify-center border border-[#262626] bg-[#1A1A1A] hover:bg-[#262626] text-white transition-colors flex-shrink-0 p-[14px]"
             aria-label="Previous image"
           >
-            <ChevronLeft className="w-5 h-5 lg:w-[30px] lg:h-[30px]" />
+            <ChevronLeft style={{ width: "30px", height: "30px" }} className="text-white" />
           </button>
 
-          {/* Progress Indicator Segments */}
-          <div className="flex items-center gap-1.5 sm:gap-2">
+          {/* Progress Indicator Segments container width: 140px, height: 5px, gap: 4px */}
+          <div className="flex items-center gap-[4px] w-[140px] h-[5px] justify-center">
             {data.images.map((_, idx) => (
               <div
                 key={idx}
-                className={`h-[5px] w-6 sm:w-10 lg:w-12 rounded-[60px] transition-colors ${
+                className={`h-[5px] flex-1 rounded-[60px] transition-colors ${
                   idx === activeImageIndex ? "bg-[#703BF7]" : "bg-[#4D4D4D]"
                 }`}
               />
@@ -168,10 +169,11 @@ export default function PropertyDetailsHero({ property }: PropertyDetailsHeroPro
 
           <button
             onClick={handleNext}
-            className="p-2 sm:p-2.5 lg:p-3 rounded-full border border-[#262626] bg-[#1A1A1A] hover:bg-[#262626] text-white transition-colors"
+            style={{ width: "58px", height: "58px", borderRadius: "69px" }}
+            className="flex items-center justify-center border border-[#262626] bg-[#1A1A1A] hover:bg-[#262626] text-white transition-colors flex-shrink-0 p-[14px]"
             aria-label="Next image"
           >
-            <ChevronRight className="w-5 h-5 lg:w-[30px] lg:h-[30px]" />
+            <ChevronRight style={{ width: "30px", height: "30px" }} className="text-white" />
           </button>
         </div>
 
