@@ -15,7 +15,7 @@ export default function Footer() {
           <Link href="/" className="flex items-center gap-3">
             <div className="relative w-10 h-10 flex items-center justify-center">
               <Image 
-                src="/images/symbol.png" 
+                src="/images/Symbol.png" 
                 alt="Estatein Logo" 
                 fill 
                 className="object-contain"
