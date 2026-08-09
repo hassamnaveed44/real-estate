@@ -73,22 +73,22 @@ export default function Faqs() {
   const currentFaq = allFaqs[currentIndex];
 
   return (
-    <section className="w-full bg-[#141414] text-white py-16 lg:py-24 px-4 sm:px-10 lg:px-16">
-      <div className="max-w-[1440px] mx-auto space-y-12">
+    <section className="w-full bg-[#141414] text-white py-12 lg:py-16 px-4 sm:px-8 lg:px-12">
+      <div className="max-w-[1360px] mx-auto space-y-10">
         
         {/* Header Row */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div className="space-y-3 max-w-3xl">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-5">
+          <div className="space-y-2 max-w-3xl">
             <div className="flex items-center gap-1">
               <span className="text-gray-600 text-sm">✦</span>
               <span className="text-gray-600 text-xs opacity-75">✦</span>
               <span className="text-gray-600 text-[10px] opacity-50">✦</span>
             </div>
 
-            <h2 className="text-[28px] sm:text-[38px] lg:text-[42px] font-semibold tracking-tight text-white leading-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-semibold tracking-tight text-white leading-tight">
               Frequently Asked Questions
             </h2>
-            <p className="text-[14px] lg:text-[17px] font-medium text-[#999999] leading-relaxed">
+            <p className="text-sm lg:text-[15px] font-medium text-[#999999] leading-relaxed">
               Find answers to common questions about Estatein&apos;s services, property listings, and the real estate process. We&apos;re here to provide clarity and assist you every step of the way.
             </p>
           </div>
@@ -96,26 +96,26 @@ export default function Faqs() {
           {/* Desktop View All button */}
           <Link
             href="/faqs"
-            className="hidden lg:inline-flex px-6 py-[16px] rounded-[10px] bg-[#1A1A1A] border border-[#262626] text-white font-medium text-[15px] hover:bg-[#222222] transition whitespace-nowrap shadow-sm"
+            className="hidden lg:inline-flex px-5 py-3 rounded-[10px] bg-[#1A1A1A] border border-[#262626] text-white font-medium text-[14px] hover:bg-[#222222] transition whitespace-nowrap shadow-sm"
           >
             View All FAQ&apos;s
           </Link>
         </div>
 
         {/* Desktop Grid View (3 across) */}
-        <div className="hidden lg:grid grid-cols-3 gap-6">
+        <div className="hidden lg:grid grid-cols-3 gap-5">
           {[0, 1, 2].map((offset) => {
             const faq = allFaqs[(currentIndex + offset) % allFaqs.length];
             return (
               <div
                 key={faq.id}
-                className="bg-[#141414] border border-[#262626] rounded-[12px] p-8 flex flex-col justify-between space-y-6 hover:border-[#703BF7] transition-all shadow-md min-h-[300px]"
+                className="bg-[#141414] border border-[#262626] rounded-[12px] p-6 flex flex-col justify-between space-y-4 hover:border-[#703BF7] transition-all shadow-md min-h-[220px]"
               >
-                <div className="space-y-4">
-                  <h3 className="text-[22px] font-semibold text-white tracking-wide leading-snug">
+                <div className="space-y-2.5">
+                  <h3 className="text-[17px] lg:text-[18px] font-semibold text-white tracking-wide leading-snug">
                     {faq.question}
                   </h3>
-                  <p className="text-[16px] font-medium text-[#999999] leading-relaxed line-clamp-3">
+                  <p className="text-[13px] lg:text-[14px] font-medium text-[#999999] leading-relaxed line-clamp-3">
                     {faq.answer}
                   </p>
                 </div>
@@ -123,7 +123,7 @@ export default function Faqs() {
                 <div>
                   <Link
                     href={`/faqs/${faq.id}`}
-                    className="inline-flex px-5 py-3 rounded-[10px] bg-[#1A1A1A] border border-[#262626] text-white font-medium text-[14px] hover:bg-[#222222] hover:border-[#703BF7] transition"
+                    className="inline-flex px-4 py-2 rounded-[8px] bg-[#1A1A1A] border border-[#262626] text-white font-medium text-[13px] hover:bg-[#222222] hover:border-[#703BF7] transition"
                   >
                     Read More
                   </Link>
@@ -133,14 +133,14 @@ export default function Faqs() {
           })}
         </div>
 
-        {/* Mobile Single Card View matching the exact requested screenshot layout */}
-        <div className="block lg:hidden space-y-6">
-          <div className="bg-[#141414] border border-[#262626] rounded-[12px] p-6 flex flex-col justify-between space-y-6 min-h-[260px]">
-            <div className="space-y-4">
-              <h3 className="text-[18px] sm:text-[20px] font-semibold text-white tracking-wide leading-snug">
+        {/* Mobile Single Card View */}
+        <div className="block lg:hidden space-y-5">
+          <div className="bg-[#141414] border border-[#262626] rounded-[12px] p-5 flex flex-col justify-between space-y-4 min-h-[200px]">
+            <div className="space-y-2.5">
+              <h3 className="text-[16px] sm:text-[18px] font-semibold text-white tracking-wide leading-snug">
                 {currentFaq.question}
               </h3>
-              <p className="text-[14px] sm:text-[15px] font-medium text-[#999999] leading-relaxed">
+              <p className="text-[13px] sm:text-[14px] font-medium text-[#999999] leading-relaxed">
                 {currentFaq.answer}
               </p>
             </div>
@@ -148,68 +148,68 @@ export default function Faqs() {
             <div>
               <Link
                 href={`/faqs/${currentFaq.id}`}
-                className="inline-flex px-5 py-3 rounded-[10px] bg-[#1A1A1A] border border-[#262626] text-white font-medium text-[14px] hover:bg-[#222222] transition"
+                className="inline-flex px-4 py-2 rounded-[8px] bg-[#1A1A1A] border border-[#262626] text-white font-medium text-[13px] hover:bg-[#222222] transition"
               >
                 Read More
               </Link>
             </div>
           </div>
 
-          {/* Mobile Bottom Row: View All Button on Left, Arrows & Counter on Right */}
-          <div className="pt-4 border-t border-[#262626] flex items-center justify-between gap-4">
+          {/* Mobile Bottom Row */}
+          <div className="pt-4 border-t border-[#262626] flex items-center justify-between gap-3">
             <Link
               href="/faqs"
-              className="px-5 py-3 rounded-[10px] bg-[#1A1A1A] border border-[#262626] text-white font-medium text-[14px] hover:bg-[#222222] transition whitespace-nowrap"
+              className="px-4 py-2 rounded-[8px] bg-[#1A1A1A] border border-[#262626] text-white font-medium text-[13px] hover:bg-[#222222] transition whitespace-nowrap"
             >
               View All FAQ&apos;s
             </Link>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               <button
                 onClick={handlePrev}
-                className="w-12 h-12 rounded-full border border-[#262626] bg-[#1A1A1A] hover:bg-[#222222] flex items-center justify-center text-white transition shadow-sm"
+                className="w-10 h-10 rounded-full border border-[#262626] bg-[#1A1A1A] hover:bg-[#222222] flex items-center justify-center text-white transition shadow-sm"
                 aria-label="Previous FAQs"
               >
-                <ArrowLeft className="w-5 h-5" />
+                <ArrowLeft className="w-4 h-4" />
               </button>
 
-              <span className="text-[14px] font-medium whitespace-nowrap">
+              <span className="text-[13px] font-medium whitespace-nowrap">
                 <span className="text-white">{String(currentIndex + 1).padStart(2, '0')}</span>
                 <span className="text-[#999999]"> of {String(totalPages).padStart(2, '0')}</span>
               </span>
 
               <button
                 onClick={handleNext}
-                className="w-12 h-12 rounded-full border border-[#262626] bg-[#1A1A1A] hover:bg-[#222222] flex items-center justify-center text-white transition shadow-sm"
+                className="w-10 h-10 rounded-full border border-[#262626] bg-[#1A1A1A] hover:bg-[#222222] flex items-center justify-center text-white transition shadow-sm"
                 aria-label="Next FAQs"
               >
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           </div>
         </div>
 
         {/* Desktop Pagination Row */}
-        <div className="hidden lg:flex pt-6 border-t border-[#262626] items-center justify-between">
-          <div className="text-[18px] font-medium">
+        <div className="hidden lg:flex pt-5 border-t border-[#262626] items-center justify-between">
+          <div className="text-[14px] lg:text-[15px] font-medium">
             <span className="text-white">{String(currentIndex + 1).padStart(2, '0')}</span>
             <span className="text-[#999999]"> of {String(totalPages).padStart(2, '0')}</span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <button
               onClick={handlePrev}
-              className="w-12 h-12 rounded-full border border-[#262626] bg-[#1A1A1A] hover:bg-[#222222] flex items-center justify-center text-white transition shadow-sm"
+              className="w-10 h-10 rounded-full border border-[#262626] bg-[#1A1A1A] hover:bg-[#222222] flex items-center justify-center text-white transition shadow-sm"
               aria-label="Previous FAQs"
             >
-              <ArrowLeft className="w-5 h-5" />
+              <ArrowLeft className="w-4 h-4" />
             </button>
             <button
               onClick={handleNext}
-              className="w-12 h-12 rounded-full border border-[#262626] bg-[#1A1A1A] hover:bg-[#222222] flex items-center justify-center text-white transition shadow-sm"
+              className="w-10 h-10 rounded-full border border-[#262626] bg-[#1A1A1A] hover:bg-[#222222] flex items-center justify-center text-white transition shadow-sm"
               aria-label="Next FAQs"
             >
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </div>

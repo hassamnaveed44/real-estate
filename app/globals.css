@@ -5,3 +5,43 @@
     @apply bg-[#141414] text-white antialiased selection:bg-[#703BF7] selection:text-white overflow-x-hidden;
   }
 }
+
+/* Clerk User Profile Popover High Contrast Styling */
+.cl-userButtonPopoverCard {
+  background-color: #1A1A1A !important;
+  border: 1px solid #262626 !important;
+  color: #ffffff !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5) !important;
+}
+
+.cl-userPreviewMainIdentifier {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+}
+
+.cl-userPreviewSecondaryIdentifier {
+  color: #999999 !important;
+  font-size: 13px !important;
+}
+
+.cl-userButtonPopoverActionButton,
+.cl-userButtonPopoverActionButtonText,
+.cl-userButtonPopoverCustomItemButton {
+  color: #ffffff !important;
+  font-weight: 500 !important;
+}
+
+.cl-userButtonPopoverActionButton:hover,
+.cl-userButtonPopoverCustomItemButton:hover {
+  background-color: #262626 !important;
+  color: #703BF7 !important;
+}
+
+.cl-userButtonPopoverActionButtonIcon {
+  color: #703BF7 !important;
+}
+
+.cl-userButtonPopoverFooter {
+  display: none !important;
+}

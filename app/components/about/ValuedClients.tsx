@@ -21,78 +21,78 @@ const clientsData = [
 
 export default function ValuedClients() {
   return (
-    <section className="w-full bg-[#141414] text-white py-12 md:py-16 lg:py-24 px-4 sm:px-6 md:px-10 lg:px-16 overflow-hidden">
-      <div className="max-w-[1440px] mx-auto flex flex-col gap-12 lg:gap-16">
+    <section className="w-full bg-[#141414] text-white py-12 lg:py-16 px-4 sm:px-8 lg:px-12 overflow-hidden">
+      <div className="max-w-[1360px] mx-auto flex flex-col gap-8 lg:gap-12">
         
         {/* Header Block */}
-        <div className="flex flex-col space-y-4">
-          <div className="flex items-center gap-1.5 text-gray-700 mb-1">
-            <span className="text-xl">✦</span>
+        <div className="flex flex-col space-y-2.5">
+          <div className="flex items-center gap-1 text-gray-700 mb-1">
+            <span className="text-lg">✦</span>
             <span className="text-xs">✦</span>
             <span className="text-sm">✦</span>
           </div>
 
-          <h2 className="text-[32px] sm:text-[40px] lg:text-[48px] font-semibold text-white tracking-tight leading-[1.2]">
+          <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-semibold text-white tracking-tight leading-[1.2]">
             Our Valued Clients
           </h2>
 
-          <p className="w-full max-w-[1297px] text-[15px] sm:text-[16px] lg:text-[18px] font-medium text-[#999999] leading-[150%] tracking-[0%]">
+          <p className="w-full max-w-[1200px] text-sm lg:text-[15px] font-medium text-[#999999] leading-relaxed">
             At Estatein, we have had the privilege of working with a diverse range of clients across various industries. Here are some of the clients we&apos;ve had the pleasure of serving.
           </p>
         </div>
 
         {/* Client Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-[50px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
           {clientsData.map((client, index) => (
             <div 
               key={index} 
-              className="bg-[#141414] border border-[#262626] rounded-[12px] p-6 sm:p-8 lg:p-[50px] flex flex-col space-y-8 shadow-[0_0_0_8px_#191919]"
+              className="bg-[#141414] border border-[#262626] rounded-[12px] p-5 sm:p-6 lg:p-7 flex flex-col space-y-6 shadow-[0_0_0_6px_#191919]"
             >
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div className="flex flex-col space-y-1">
-                  <span className="text-[16px] sm:text-[18px] font-medium text-[#999999]">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div className="flex flex-col space-y-0.5">
+                  <span className="text-[13px] sm:text-[14px] font-medium text-[#999999]">
                     {client.since}
                   </span>
-                  <h3 className="text-[24px] sm:text-[26px] lg:text-[30px] font-semibold text-white tracking-wide">
+                  <h3 className="text-[20px] sm:text-[22px] lg:text-[24px] font-semibold text-white tracking-wide">
                     {client.name}
                   </h3>
                 </div>
 
                 <a 
                   href="#visit" 
-                  className="bg-[#1A1A1A] border border-[#262626] hover:border-[#703BF7] rounded-[10px] px-6 py-[14px] text-[15px] font-medium text-white transition text-center shrink-0"
+                  className="bg-[#1A1A1A] border border-[#262626] hover:border-[#703BF7] rounded-[10px] px-4 py-2.5 text-[13px] sm:text-[14px] font-medium text-white transition text-center shrink-0"
                 >
                   Visit Website
                 </a>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2 pb-2 border-y border-[#262626]">
-                <div className="flex flex-col space-y-1 sm:border-r sm:border-[#262626] sm:pr-6">
-                  <div className="flex items-center gap-2 text-[16px] sm:text-[18px] text-[#999999]">
-                    <Building2 className="w-5 h-5 text-[#999999]" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 pb-2 border-y border-[#262626]">
+                <div className="flex flex-col space-y-0.5 sm:border-r sm:border-[#262626] sm:pr-4">
+                  <div className="flex items-center gap-1.5 text-[13px] sm:text-[14px] text-[#999999]">
+                    <Building2 className="w-4 h-4 text-[#999999]" />
                     <span>Domain</span>
                   </div>
-                  <p className="text-[17px] sm:text-[20px] font-medium text-white sm:pl-7">
+                  <p className="text-[14px] sm:text-[16px] font-medium text-white sm:pl-5">
                     {client.domain}
                   </p>
                 </div>
 
-                <div className="flex flex-col space-y-1 sm:pl-4">
-                  <div className="flex items-center gap-2 text-[16px] sm:text-[18px] text-[#999999]">
-                    <Zap className="w-5 h-5 text-[#999999]" />
+                <div className="flex flex-col space-y-0.5 sm:pl-2">
+                  <div className="flex items-center gap-1.5 text-[13px] sm:text-[14px] text-[#999999]">
+                    <Zap className="w-4 h-4 text-[#999999]" />
                     <span>Category</span>
                   </div>
-                  <p className="text-[17px] sm:text-[20px] font-medium text-white sm:pl-7">
+                  <p className="text-[14px] sm:text-[16px] font-medium text-white sm:pl-5">
                     {client.category}
                   </p>
                 </div>
               </div>
 
-              <div className="border border-[#262626] rounded-[12px] p-6 sm:p-[30px] bg-[#141414] flex flex-col space-y-3">
-                <span className="text-[16px] sm:text-[18px] font-medium text-[#999999]">
+              <div className="border border-[#262626] rounded-[10px] p-4 sm:p-5 bg-[#141414] flex flex-col space-y-2">
+                <span className="text-[13px] sm:text-[14px] font-medium text-[#999999]">
                   What They Said 🤗
                 </span>
-                <p className="text-[16px] sm:text-[18px] font-medium text-white leading-[160%]">
+                <p className="text-[13px] sm:text-[14px] font-medium text-white leading-relaxed">
                   {client.testimonial}
                 </p>
               </div>
@@ -102,18 +102,18 @@ export default function ValuedClients() {
         </div>
 
         {/* Pagination Row */}
-        <div className="flex items-center justify-between pt-6 border-t border-[#262626]">
-          <div className="text-[18px] sm:text-[20px] font-medium text-white">
+        <div className="flex items-center justify-between pt-5 border-t border-[#262626]">
+          <div className="text-[14px] sm:text-[15px] font-medium text-white">
             <span className="text-white font-semibold">01</span>{" "}
             <span className="text-[#999999]">of 10</span>
           </div>
 
-          <div className="flex items-center gap-4">
-            <button aria-label="Previous page" className="w-[45px] h-[45px] lg:w-[50px] lg:h-[50px] rounded-full border border-[#262626] bg-[#141414] hover:border-[#703BF7] flex items-center justify-center text-white transition">
-              <ArrowLeft className="w-5 h-5" />
+          <div className="flex items-center gap-3">
+            <button aria-label="Previous page" className="w-10 h-10 rounded-full border border-[#262626] bg-[#141414] hover:border-[#703BF7] flex items-center justify-center text-white transition">
+              <ArrowLeft className="w-4 h-4" />
             </button>
-            <button aria-label="Next page" className="w-[45px] h-[45px] lg:w-[50px] lg:h-[50px] rounded-full border border-[#262626] bg-[#141414] hover:border-[#703BF7] flex items-center justify-center text-white transition">
-              <ArrowRight className="w-5 h-5" />
+            <button aria-label="Next page" className="w-10 h-10 rounded-full border border-[#262626] bg-[#141414] hover:border-[#703BF7] flex items-center justify-center text-white transition">
+              <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </div>

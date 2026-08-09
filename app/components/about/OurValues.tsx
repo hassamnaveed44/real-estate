@@ -27,51 +27,51 @@ const valuesData = [
 
 export default function OurValues() {
   return (
-    <section className="w-full bg-[#141414] text-white py-12 md:py-16 lg:py-24 px-4 sm:px-6 md:px-10 lg:px-16 overflow-hidden">
-      <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+    <section className="w-full bg-[#141414] text-white py-12 lg:py-16 px-4 sm:px-8 lg:px-12 overflow-hidden">
+      <div className="max-w-[1360px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         
         {/* Left Text Column */}
-        <div className="lg:col-span-5 flex flex-col justify-center space-y-4 max-w-[517px]">
-          <div className="flex items-center gap-1.5 text-gray-700 mb-1">
-            <span className="text-xl">✦</span>
+        <div className="lg:col-span-5 flex flex-col justify-center space-y-3 max-w-[500px]">
+          <div className="flex items-center gap-1 text-gray-700 mb-1">
+            <span className="text-lg">✦</span>
             <span className="text-xs">✦</span>
             <span className="text-sm">✦</span>
           </div>
 
-          <h2 className="text-[32px] sm:text-[40px] lg:text-[48px] font-semibold text-white tracking-tight leading-[1.2]">
+          <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-semibold text-white tracking-tight leading-[1.2]">
             Our Values
           </h2>
 
-          <p className="text-[15px] sm:text-[16px] lg:text-[18px] font-medium text-[#999999] leading-[1.6]">
+          <p className="text-sm lg:text-[15px] font-medium text-[#999999] leading-relaxed">
             Our story is one of continuous growth and evolution. We started as a small team with big dreams, determined to create a real estate platform that transcended the ordinary.
           </p>
         </div>
 
         {/* Right Card Container */}
-        <div className="lg:col-span-7 bg-[#141414] border border-[#262626] rounded-[12px] p-6 sm:p-8 lg:p-[60px] shadow-[0_0_0_10px_#191919]">
+        <div className="lg:col-span-7 bg-[#141414] border border-[#262626] rounded-[12px] p-5 sm:p-7 lg:p-8 shadow-[0_0_0_6px_#191919]">
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
             {valuesData.map((item, index) => {
               const IconComponent = item.icon;
               return (
                 <div 
                   key={index} 
-                  className={`flex flex-col space-y-4 ${
-                    index === 0 || index === 2 ? "md:border-r md:border-[#262626] md:pr-8" : ""
+                  className={`flex flex-col space-y-3 ${
+                    index === 0 || index === 2 ? "md:border-r md:border-[#262626] md:pr-6" : ""
                   } ${
-                    index === 0 || index === 1 ? "pb-8 md:border-b md:border-[#262626] md:pb-10" : ""
+                    index === 0 || index === 1 ? "pb-6 md:border-b md:border-[#262626] md:pb-6" : ""
                   }`}
                 >
-                  <div className="flex items-center gap-4">
-                    <div className="w-[56px] h-[56px] lg:w-[64px] lg:h-[64px] rounded-full bg-[#141414] border border-[#703BF7] flex items-center justify-center shrink-0 shadow-inner">
-                      <IconComponent className="w-[24px] h-[24px] lg:w-[28px] lg:h-[28px] text-[#703BF7] fill-[#703BF7]" />
+                  <div className="flex items-center gap-3">
+                    <div className="w-11 h-11 rounded-full bg-[#141414] border border-[#703BF7] flex items-center justify-center shrink-0 shadow-inner">
+                      <IconComponent className="w-5 h-5 text-[#703BF7] fill-[#703BF7]" />
                     </div>
-                    <h3 className="text-[20px] lg:text-[22px] font-semibold text-white tracking-wide">
+                    <h3 className="text-[17px] lg:text-[18px] font-semibold text-white tracking-wide">
                       {item.title}
                     </h3>
                   </div>
 
-                  <p className="text-[15px] lg:text-[16px] font-medium text-[#999999] leading-[1.6]">
+                  <p className="text-[13px] lg:text-[14px] font-medium text-[#999999] leading-relaxed">
                     {item.description}
                   </p>
                 </div>

@@ -76,60 +76,60 @@ export default function Testimonials() {
   );
 
   return (
-    <section className="w-full bg-[#141414] text-white py-16 lg:py-24 px-6 sm:px-10 lg:px-16 border-t border-[#262626]">
-      <div className="max-w-[1440px] mx-auto space-y-12">
+    <section className="w-full bg-[#141414] text-white py-12 lg:py-16 px-4 sm:px-8 lg:px-12 border-t border-[#262626]">
+      <div className="max-w-[1360px] mx-auto space-y-10">
         
         {/* Header Row */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div className="space-y-2 max-w-3xl">
-            <h2 className="text-[32px] sm:text-[38px] lg:text-[42px] font-semibold tracking-tight text-white">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-5">
+          <div className="space-y-1.5 max-w-3xl">
+            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-semibold tracking-tight text-white">
               What Our Clients Say
             </h2>
-            <p className="text-[15px] lg:text-[17px] font-medium text-[#999999] leading-relaxed">
+            <p className="text-sm lg:text-[15px] font-medium text-[#999999] leading-relaxed">
               Read the success stories and heartfelt testimonials from our valued clients. Discover why they chose Estatein for their real estate journey.
             </p>
           </div>
 
           <Link
             href="/testimonials"
-            className="px-6 py-[16px] rounded-[10px] bg-[#1A1A1A] border border-[#262626] text-white font-medium text-[15px] hover:bg-[#222222] transition whitespace-nowrap self-start md:self-auto shadow-sm"
+            className="px-5 py-3 rounded-[10px] bg-[#1A1A1A] border border-[#262626] text-white font-medium text-[14px] hover:bg-[#222222] transition whitespace-nowrap self-start md:self-auto shadow-sm"
           >
             View All Testimonials
           </Link>
         </div>
 
         {/* Testimonial Cards Row (3 across) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {currentReviews.map((review) => (
             <div
               key={review.id}
-              className="bg-[#141414] border border-[#262626] rounded-[12px] p-6 lg:p-8 flex flex-col justify-between space-y-6 hover:border-[#703BF7] transition-all shadow-md"
+              className="bg-[#141414] border border-[#262626] rounded-[12px] p-5 lg:p-6 flex flex-col justify-between space-y-4 hover:border-[#703BF7] transition-all shadow-md"
             >
               {/* Star Rating Icons */}
               <div className="flex items-center gap-1">
                 {[...Array(5)].map((_, i) => (
                   <div
                     key={i}
-                    className="w-11 h-11 rounded-full bg-[#1A1A1A] border border-[#262626] flex items-center justify-center"
+                    className="w-8 h-8 rounded-full bg-[#1A1A1A] border border-[#262626] flex items-center justify-center"
                   >
-                    <Star className="w-5 h-5 fill-[#FFC700] text-[#FFC700]" />
+                    <Star className="w-3.5 h-3.5 fill-[#FFC700] text-[#FFC700]" />
                   </div>
                 ))}
               </div>
 
               {/* Review Text Block */}
-              <div className="space-y-3">
-                <h3 className="text-[20px] lg:text-[22px] font-semibold text-white tracking-wide">
+              <div className="space-y-2">
+                <h3 className="text-[17px] lg:text-[19px] font-semibold text-white tracking-wide">
                   {review.title}
                 </h3>
-                <p className="text-[15px] lg:text-[16px] font-medium text-[#999999] leading-relaxed line-clamp-4">
+                <p className="text-[13px] lg:text-[14px] font-medium text-[#999999] leading-relaxed line-clamp-4">
                   {review.content}
                 </p>
               </div>
 
               {/* Reviewer Info Row */}
-              <div className="pt-5 border-t border-[#262626] flex items-center gap-4">
-                <div className="relative w-[60px] h-[60px] rounded-full overflow-hidden border border-[#262626] bg-[#1A1A1A] flex-shrink-0">
+              <div className="pt-4 border-t border-[#262626] flex items-center gap-3">
+                <div className="relative w-11 h-11 rounded-full overflow-hidden border border-[#262626] bg-[#1A1A1A] flex-shrink-0">
                   <Image
                     src={review.clientImage}
                     alt={review.clientName}
@@ -138,10 +138,10 @@ export default function Testimonials() {
                   />
                 </div>
                 <div>
-                  <h4 className="text-[18px] font-semibold text-white">
+                  <h4 className="text-[15px] lg:text-[16px] font-semibold text-white">
                     {review.clientName}
                   </h4>
-                  <p className="text-[14px] font-medium text-[#999999]">
+                  <p className="text-[12px] lg:text-[13px] font-medium text-[#999999]">
                     {review.clientLocation}
                   </p>
                 </div>
@@ -151,26 +151,26 @@ export default function Testimonials() {
         </div>
 
         {/* Pagination Row */}
-        <div className="pt-6 border-t border-[#262626] flex items-center justify-between">
-          <div className="text-[16px] lg:text-[18px] font-medium">
+        <div className="pt-5 border-t border-[#262626] flex items-center justify-between">
+          <div className="text-[14px] lg:text-[15px] font-medium">
             <span className="text-white">0{currentIndex + 1}</span>
             <span className="text-[#999999]"> of 0{totalPages}</span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <button
               onClick={handlePrev}
-              className="w-12 h-12 rounded-full border border-[#262626] bg-[#1A1A1A] hover:bg-[#222222] flex items-center justify-center text-white transition shadow-sm"
+              className="w-10 h-10 rounded-full border border-[#262626] bg-[#1A1A1A] hover:bg-[#222222] flex items-center justify-center text-white transition shadow-sm"
               aria-label="Previous testimonials"
             >
-              <ArrowLeft className="w-5 h-5" />
+              <ArrowLeft className="w-4 h-4" />
             </button>
             <button
               onClick={handleNext}
-              className="w-12 h-12 rounded-full border border-[#262626] bg-[#1A1A1A] hover:bg-[#222222] flex items-center justify-center text-white transition shadow-sm"
+              className="w-10 h-10 rounded-full border border-[#262626] bg-[#1A1A1A] hover:bg-[#222222] flex items-center justify-center text-white transition shadow-sm"
               aria-label="Next testimonials"
             >
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </div>

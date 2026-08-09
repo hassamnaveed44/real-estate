@@ -26,30 +26,30 @@ export default function SmartInvestments() {
   ];
 
   return (
-    <section className="w-full bg-[#141414] text-white py-[80px] flex justify-center">
-      <div className="w-full max-w-[1720px] px-[120px] xl:px-[162px] max-lg:px-[80px] max-md:px-[16px] flex flex-col xl:flex-row gap-[50px] items-stretch">
+    <section className="w-full bg-[#141414] text-white py-12 lg:py-16 px-4 sm:px-8 lg:px-12 flex justify-center">
+      <div className="w-full max-w-[1360px] mx-auto flex flex-col xl:flex-row gap-8 lg:gap-10 items-stretch">
         
         {/* Left Column — Text + CTA Card */}
-        <div className="w-full xl:w-[480px] flex flex-col justify-between shrink-0">
+        <div className="w-full xl:w-[420px] flex flex-col justify-between gap-6 shrink-0">
           {/* Heading Block */}
-          <div className="flex flex-col gap-[16px]">
+          <div className="flex flex-col gap-2.5">
             {/* Decorative Sparkles */}
-            <div className="flex items-center gap-1 text-gray-600 text-md mb-1">
+            <div className="flex items-center gap-1 text-gray-600 text-sm mb-1">
               <span>✦</span>
               <span className="opacity-75">✦</span>
               <span className="opacity-40">✦</span>
             </div>
 
-            <h2 className="text-[48px] max-lg:text-[38px] max-md:text-[28px] font-semibold text-white leading-[150%]">
+            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-semibold text-white leading-[1.2]">
               Smart Investments, Informed Decisions
             </h2>
-            <p className="text-[18px] max-lg:text-[16px] max-md:text-[14px] font-medium text-[#999999] leading-[150%]">
-              Building a real estate portfolio requires a strategic approach. Estateins Investment Advisory Service empowers you to make smart investments and informed decisions.
+            <p className="text-sm lg:text-[15px] font-medium text-[#999999] leading-relaxed">
+              Building a real estate portfolio requires a strategic approach. Estatein&apos;s Investment Advisory Service empowers you to make smart investments and informed decisions.
             </p>
           </div>
 
-          {/* CTA Card with Reduced Internal Gap */}
-          <div className="relative overflow-hidden bg-[#1A1A1A] border border-[#262626] rounded-[12px] max-md:rounded-[10px] p-[40px] xl:p-[50px] flex flex-col justify-between gap-[16px] mt-[40px] xl:mt-0 grow">
+          {/* CTA Card */}
+          <div className="relative overflow-hidden bg-[#1A1A1A] border border-[#262626] rounded-[12px] p-5 sm:p-6 flex flex-col justify-between gap-4 grow shadow-sm">
             {/* Thin Waves Background Graphic */}
             <svg
               className="absolute inset-0 w-full h-full pointer-events-none opacity-20"
@@ -66,31 +66,31 @@ export default function SmartInvestments() {
               />
             </svg>
 
-            <div className="flex flex-col gap-[16px] relative z-10">
-              <h3 className="text-[24px] max-lg:text-[20px] font-semibold text-white leading-[140%]">
+            <div className="flex flex-col gap-2 relative z-10">
+              <h3 className="text-lg sm:text-xl font-semibold text-white leading-snug">
                 Unlock Your Investment Potential
               </h3>
-              <p className="text-[18px] max-lg:text-[16px] max-md:text-[14px] font-medium text-[#E4E4E7] leading-[150%]">
-                Explore our Property Management Service categories and let us handle the complexities while you enjoy the benefits of property ownership.
+              <p className="text-[13px] sm:text-[14px] font-medium text-[#999999] leading-relaxed">
+                Explore our Investment Advisory Service categories and let us help you build and manage a profitable real estate portfolio.
               </p>
             </div>
 
-            <button className="w-full bg-[#141414] hover:bg-[#1f1f1f] border border-[#262626] rounded-[10px] py-[16px] xl:py-[18px] px-[24px] text-white text-[18px] max-lg:text-[16px] max-md:text-[14px] font-medium transition-colors text-center relative z-10">
+            <button className="w-full bg-[#141414] hover:bg-[#1f1f1f] border border-[#262626] rounded-[8px] py-3 px-4 text-white text-[13px] sm:text-[14px] font-medium transition-colors text-center relative z-10 shadow-sm">
               Learn More
             </button>
           </div>
         </div>
 
         {/* Right Column — 2×2 Info Card Grid Wrapper */}
-        <div className="w-full grow bg-[#1A1A1A] border border-[#262626] rounded-[12px] p-[10px] flex">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px] w-full">
+        <div className="w-full grow bg-[#1A1A1A] border border-[#262626] rounded-[12px] p-3 sm:p-4 flex">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full">
             {investmentCards.map((card, index) => (
               <div
                 key={index}
-                className="bg-[#141414] border border-[#262626] rounded-[12px] max-md:rounded-[10px] p-[40px] xl:p-[50px] flex flex-col gap-[30px] justify-between"
+                className="bg-[#141414] border border-[#262626] rounded-[10px] p-5 sm:p-6 flex flex-col gap-4 justify-between"
               >
                 {/* Icon Container with Gradient Border Ring */}
-                <div className="relative w-[60px] h-[60px] flex items-center justify-center shrink-0">
+                <div className="relative w-11 h-11 flex items-center justify-center shrink-0">
                   <svg className="absolute inset-0 w-full h-full" viewBox="0 0 60 60">
                     <defs>
                       <linearGradient id={`inv-grad-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
@@ -110,17 +110,17 @@ export default function SmartInvestments() {
                     />
                   </svg>
 
-                  <div className="w-[44px] h-[44px] rounded-[100px] flex items-center justify-center border border-[#A685FA]/30 bg-[#1A1A1A]">
+                  <div className="w-9 h-9 rounded-full flex items-center justify-center border border-[#A685FA]/30 bg-[#1A1A1A]">
                     {card.icon}
                   </div>
                 </div>
 
                 {/* Title & Description Stacked */}
-                <div className="flex flex-col gap-[10px]">
-                  <h3 className="text-[24px] max-lg:text-[20px] font-semibold text-white leading-[140%]">
+                <div className="flex flex-col gap-1.5">
+                  <h3 className="text-[17px] lg:text-[18px] font-semibold text-white leading-snug">
                     {card.title}
                   </h3>
-                  <p className="text-[18px] max-lg:text-[16px] max-md:text-[14px] font-medium text-[#999999] leading-[150%]">
+                  <p className="text-[13px] lg:text-[14px] font-medium text-[#999999] leading-relaxed">
                     {card.description}
                   </p>
                 </div>

@@ -3,16 +3,16 @@ import Image from 'next/image';
 
 export default function OfficeGallerySection() {
   return (
-    <section className="w-full bg-[#141414] py-[60px] md:py-[80px] px-4 sm:px-6 md:px-16 lg:px-[162px] border-b border-[#262626]">
+    <section className="w-full bg-[#141414] py-12 lg:py-16 px-4 sm:px-8 lg:px-12 border-b border-[#262626]">
       {/* Outer Card Wrapper */}
-      <div className="relative max-w-[1596px] mx-auto bg-[#1A1A1A] border border-[#262626] rounded-[12px] p-4 sm:p-8 md:p-12 lg:p-[60px] overflow-hidden flex flex-col gap-[30px] lg:gap-[40px]">
+      <div className="relative max-w-[1360px] mx-auto bg-[#1A1A1A] border border-[#262626] rounded-[12px] p-4 sm:p-6 lg:p-8 overflow-hidden flex flex-col gap-6 lg:gap-8 shadow-sm">
         
         {/* Main Image Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[16px] md:gap-[20px] w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3.5 w-full">
           
-          {/* Left Container (Two stacked tall images) */}
-          <div className="grid grid-cols-2 lg:flex lg:flex-col gap-[16px] md:gap-[20px] w-full">
-            <div className="relative w-full h-[160px] sm:h-[300px] lg:h-[236px] rounded-[10px] overflow-hidden border border-[#262626]">
+          {/* Left Container (Two stacked images) */}
+          <div className="grid grid-cols-2 lg:flex lg:flex-col gap-3.5 w-full">
+            <div className="relative w-full h-[110px] sm:h-[125px] lg:h-[135px] rounded-[8px] overflow-hidden border border-[#262626]">
               <Image 
                 src="/images/contact1.png" 
                 alt="Office Workspace" 
@@ -20,7 +20,7 @@ export default function OfficeGallerySection() {
                 className="object-cover"
               />
             </div>
-            <div className="relative w-full h-[160px] sm:h-[300px] lg:h-[236px] rounded-[10px] overflow-hidden border border-[#262626]">
+            <div className="relative w-full h-[110px] sm:h-[125px] lg:h-[135px] rounded-[8px] overflow-hidden border border-[#262626]">
               <Image 
                 src="/images/contact2.png" 
                 alt="Team Collaboration" 
@@ -31,9 +31,9 @@ export default function OfficeGallerySection() {
           </div>
 
           {/* Right Container (Top wide image + Bottom two side-by-side images) */}
-          <div className="flex flex-col gap-[16px] md:gap-[20px] w-full">
-            {/* Top Wide Image - Hidden on mobile, visible on big screens */}
-            <div className="relative hidden lg:block w-full h-[236px] rounded-[10px] overflow-hidden border border-[#262626]">
+          <div className="flex flex-col gap-3.5 w-full">
+            {/* Top Wide Image */}
+            <div className="relative hidden lg:block w-full h-[135px] rounded-[8px] overflow-hidden border border-[#262626]">
               <Image 
                 src="/images/contact3.png" 
                 alt="Professional Team" 
@@ -43,8 +43,8 @@ export default function OfficeGallerySection() {
             </div>
 
             {/* Bottom Two Side-by-Side Images */}
-            <div className="grid grid-cols-2 gap-[16px] md:gap-[20px] w-full">
-              <div className="relative w-full h-[160px] sm:h-[230px] lg:h-[236px] rounded-[10px] overflow-hidden border border-[#262626]">
+            <div className="grid grid-cols-2 gap-3.5 w-full">
+              <div className="relative w-full h-[110px] sm:h-[125px] lg:h-[135px] rounded-[8px] overflow-hidden border border-[#262626]">
                 <Image 
                   src="/images/contact4.png" 
                   alt="Team Members" 
@@ -52,7 +52,7 @@ export default function OfficeGallerySection() {
                   className="object-cover"
                 />
               </div>
-              <div className="relative w-full h-[160px] sm:h-[230px] lg:h-[236px] rounded-[10px] overflow-hidden border border-[#262626]">
+              <div className="relative w-full h-[110px] sm:h-[125px] lg:h-[135px] rounded-[8px] overflow-hidden border border-[#262626]">
                 <Image 
                   src="/images/contact5.png" 
                   alt="Corporate Executives" 
@@ -66,27 +66,27 @@ export default function OfficeGallerySection() {
         </div>
 
         {/* Closing Text + Feature Image Row */}
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-[60px] pt-2">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-5 pt-2">
           
           {/* Text Block */}
-          <div className="flex-1 flex flex-col gap-3 lg:gap-4 relative w-full">
-            <div className="flex items-center gap-1.5 text-gray-600 mb-[-4px]">
-              <span className="text-[12px]">✦</span>
-              <span className="text-[16px]">✦</span>
-              <span className="text-[20px]">✦</span>
+          <div className="flex-1 flex flex-col gap-2 relative w-full">
+            <div className="flex items-center gap-1 text-gray-600 mb-0.5">
+              <span className="text-sm">✦</span>
+              <span className="text-xs">✦</span>
+              <span className="text-[10px]">✦</span>
             </div>
 
-            <h2 className="text-[24px] sm:text-[28px] md:text-[38px] lg:text-[48px] font-semibold text-white tracking-tight">
+            <h2 className="text-lg sm:text-xl lg:text-[24px] font-semibold text-white tracking-tight leading-[1.2]">
               Explore Estatein&apos;s World
             </h2>
-            <p className="text-[13px] sm:text-[14px] md:text-[16px] lg:text-[18px] font-medium text-[#999999] leading-relaxed max-w-2xl">
+            <p className="text-xs sm:text-[13px] font-medium text-[#999999] leading-relaxed max-w-xl">
               Step inside the world of Estatein, where professionalism meets warmth, and expertise meets passion. Our gallery offers a glimpse into our team and workspaces, inviting you to get to know us better.
             </p>
           </div>
 
           {/* Feature Image Block */}
           <div className="flex-1 w-full">
-            <div className="relative w-full h-[200px] sm:h-[240px] md:h-[280px] rounded-[10px] overflow-hidden border border-[#262626]">
+            <div className="relative w-full h-[130px] sm:h-[150px] rounded-[8px] overflow-hidden border border-[#262626]">
               <Image 
                 src="/images/contact6.png" 
                 alt="Handshake Partnership" 

@@ -8,12 +8,12 @@ export default function Footer() {
     <footer className="w-full bg-[#141414] text-white border-t border-[#262626] overflow-hidden">
       
       {/* Top Footer Block */}
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 pt-14 pb-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-10">
+      <div className="max-w-[1360px] mx-auto px-4 sm:px-8 lg:px-12 pt-10 sm:pt-12 pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-10">
         
         {/* Left Col: Logo & Newsletter */}
-        <div className="lg:col-span-2 space-y-5">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="relative w-10 h-10 flex items-center justify-center">
+        <div className="lg:col-span-2 space-y-4">
+          <Link href="/" className="flex items-center gap-2.5">
+            <div className="relative w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center">
               <Image 
                 src="/images/Symbol.png" 
                 alt="Estatein Logo" 
@@ -21,18 +21,18 @@ export default function Footer() {
                 className="object-contain"
               />
             </div>
-            <span className="text-white text-2xl font-bold tracking-wide">Estatein</span>
+            <span className="text-white text-xl font-bold tracking-wide">Estatein</span>
           </Link>
 
-          <div className="flex items-center bg-[#1A1A1A] border border-[#262626] rounded-[10px] px-4 py-3 max-w-sm focus-within:border-[#703BF7] transition">
-            <Mail className="w-5 h-5 text-[#999999] shrink-0 mr-3" />
+          <div className="flex items-center bg-[#1A1A1A] border border-[#262626] rounded-[10px] px-3.5 py-2.5 max-w-sm focus-within:border-[#703BF7] transition">
+            <Mail className="w-4 h-4 text-[#999999] shrink-0 mr-2.5" />
             <input 
               type="email" 
               placeholder="Enter Your Email" 
-              className="bg-transparent text-white placeholder-[#999999] text-[15px] outline-none w-full"
+              className="bg-transparent text-white placeholder-[#999999] text-[14px] outline-none w-full"
             />
             <button aria-label="Subscribe" className="text-white hover:text-[#703BF7] transition shrink-0 ml-2">
-              <Send className="w-5 h-5" />
+              <Send className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -40,9 +40,9 @@ export default function Footer() {
         {/* Right Col: Link Columns with reduced gap */}
         <div className="lg:col-span-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6">
           
-          <div className="space-y-2.5">
-            <h4 className="text-[15px] font-semibold text-[#999999]">Home</h4>
-            <ul className="space-y-2 text-[14px] font-medium text-white">
+          <div className="space-y-2">
+            <h4 className="text-[14px] font-semibold text-[#999999]">Home</h4>
+            <ul className="space-y-1.5 text-[13px] font-medium text-white">
               <li><Link href="/" className="hover:text-[#703BF7] transition">Hero Section</Link></li>
               <li><Link href="/" className="hover:text-[#703BF7] transition">Features</Link></li>
               <li><Link href="/" className="hover:text-[#703BF7] transition">Properties</Link></li>
@@ -94,8 +94,8 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="w-full bg-[#1A1A1A] border-t border-[#262626] py-5 px-6 sm:px-10 lg:px-16">
-        <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-[13px] text-[#999999]">
+      <div className="w-full bg-[#1A1A1A] border-t border-[#262626] py-4 px-4 sm:px-8 lg:px-12">
+        <div className="max-w-[1360px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-[13px] text-[#999999]">
           
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-center sm:text-left">
             <span>&copy; 2026 Estatein. All Rights Reserved.</span>
