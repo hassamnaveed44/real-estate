@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  CUSTOMER
+  AGENT
+  MANAGER
+}
+
+model User {
+  id        String     @id // Maps directly to Clerk User ID (e.g. "user_2...")
+  email     String     @unique
+  firstName String?
+  lastName  String?
+  role      Role       @default(CUSTOMER)
+  purchases Purchase[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  @@index([email])
+}
+
+model Purchase {
+  id               String   @id @default(uuid())
+  userId           String
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userName         String?  // Name of buyer (e.g. "Hassam Naveed")
+  userEmail        String?  // Email of buyer
+  propertyId       String   // References Sanity property ID or Slug
+  propertyTitle    String?  @default("Estate Property") // Title of property (e.g. "Decent Villa")
+  propertyLocation String?  // Location of property
+  pricePaid        Float
+  status           String   @default("SOLD") // "SOLD", "CONFIRMED", "PENDING"
+  purchasedAt      DateTime @default(now())
+
+  @@index([userId])
+  @@index([propertyId])
+}

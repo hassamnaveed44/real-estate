@@ -26,137 +26,134 @@ export default function PropertyInquiryForm({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
-    // Handle form submission logic here
   };
 
   return (
-    <section className="w-full bg-#262626 py-[40px] px-4 sm:px-6 lg:px-[162px] font-['Urbanist'] text-white">
-      {/* Main Layout Container: Flex row on desktop (gap 60px-100px), stack on mobile */}
-      <div className="max-w-[1596px] mx-auto flex flex-col lg:flex-row items-start justify-between gap-[40px] lg:gap-[100px]">
+    <section className="w-full bg-[#141414] py-12 lg:py-16 px-4 sm:px-8 lg:px-12 font-['Urbanist'] text-white">
+      <div className="max-w-[1360px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
         
-        {/* Left Text Block */}
-        <div className="w-full lg:w-[519px] flex flex-col gap-4">
-          {/* Decorative Sparkles */}
-          <div className="flex items-center gap-1">
-            <span className="text-gray-600 text-sm">✦</span>
-            <span className="text-gray-600 text-xs opacity-75">✦</span>
-            <span className="text-gray-600 text-[10px] opacity-50">✦</span>
+        {/* Left Column: Title & Text */}
+        <div className="lg:col-span-5 flex flex-col gap-3">
+          <div className="flex items-center gap-1 text-gray-700 mb-1">
+            <span className="text-lg">✦</span>
+            <span className="text-xs">✦</span>
+            <span className="text-sm">✦</span>
           </div>
 
-          <h2 className="text-[28px] sm:text-[36px] lg:text-[48px] font-semibold text-white leading-[120%]">
+          <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-semibold text-white tracking-tight leading-[1.2]">
             Inquire About {propertyName}
           </h2>
 
-          <p className="text-[14px] sm:text-[16px] lg:text-[18px] text-[#999999] font-medium leading-[150%]">
-            Interested in this property? Fill out the form below, and our real estate experts will get back to you with more details, including scheduling a viewing and answering any questions you may have.
+          <p className="text-sm lg:text-[15px] font-medium text-[#999999] leading-relaxed max-w-md">
+            Interested in this property? Fill out the form below, and our real estate experts will get back to you with more details, including scheduling a viewing or answering any questions.
           </p>
         </div>
 
-        {/* Right Form Card */}
-        <div className="w-full flex-1 bg-#262626 border border-[#262626] rounded-[12px] p-6 sm:p-8 lg:p-[50px]">
-          <form onSubmit={handleSubmit} className="flex flex-col gap-6 lg:gap-[30px]">
+        {/* Right Column: Inquiry Form Card */}
+        <div className="lg:col-span-7 bg-[#141414] border border-[#262626] rounded-[12px] p-5 sm:p-7 lg:p-8 flex flex-col gap-5 shadow-sm">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
             
-            {/* Row 1: First Name / Last Name */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="flex flex-col gap-2">
-                <label className="text-[14px] sm:text-[16px] font-medium text-white">First Name</label>
-                <input
-                  type="text"
-                  placeholder="Enter First Name"
+            {/* Row 1: First Name & Last Name */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="flex flex-col gap-1.5">
+                <label className="text-[13px] sm:text-[14px] font-semibold text-white">First Name</label>
+                <input 
+                  type="text" 
+                  placeholder="Enter First Name" 
                   value={formData.firstName}
                   onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                  className="bg-[#141414] border border-[#262626] rounded-[8px] px-4 py-3 sm:py-4 text-white text-[14px] sm:text-[16px] placeholder-[#666666] focus:outline-none focus:border-[#703BF7]"
+                  className="bg-[#1A1A1A] border border-[#262626] rounded-[8px] px-3.5 py-3 text-white placeholder-[#666666] text-[13px] sm:text-[14px] font-medium outline-none focus:border-[#703BF7] transition"
                   required
                 />
               </div>
 
-              <div className="flex flex-col gap-2">
-                <label className="text-[14px] sm:text-[16px] font-medium text-white">Last Name</label>
-                <input
-                  type="text"
-                  placeholder="Enter Last Name"
+              <div className="flex flex-col gap-1.5">
+                <label className="text-[13px] sm:text-[14px] font-semibold text-white">Last Name</label>
+                <input 
+                  type="text" 
+                  placeholder="Enter Last Name" 
                   value={formData.lastName}
                   onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                  className="bg-[#141414] border border-[#262626] rounded-[8px] px-4 py-3 sm:py-4 text-white text-[14px] sm:text-[16px] placeholder-[#666666] focus:outline-none focus:border-[#703BF7]"
+                  className="bg-[#1A1A1A] border border-[#262626] rounded-[8px] px-3.5 py-3 text-white placeholder-[#666666] text-[13px] sm:text-[14px] font-medium outline-none focus:border-[#703BF7] transition"
                   required
                 />
               </div>
             </div>
 
-            {/* Row 2: Email / Phone */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="flex flex-col gap-2">
-                <label className="text-[14px] sm:text-[16px] font-medium text-white">Email</label>
-                <input
-                  type="email"
-                  placeholder="Enter your Email"
+            {/* Row 2: Email & Phone */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="flex flex-col gap-1.5">
+                <label className="text-[13px] sm:text-[14px] font-semibold text-white">Email</label>
+                <input 
+                  type="email" 
+                  placeholder="Enter your Email" 
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="bg-[#141414] border border-[#262626] rounded-[8px] px-4 py-3 sm:py-4 text-white text-[14px] sm:text-[16px] placeholder-[#666666] focus:outline-none focus:border-[#703BF7]"
+                  className="bg-[#1A1A1A] border border-[#262626] rounded-[8px] px-3.5 py-3 text-white placeholder-[#666666] text-[13px] sm:text-[14px] font-medium outline-none focus:border-[#703BF7] transition"
                   required
                 />
               </div>
 
-              <div className="flex flex-col gap-2">
-                <label className="text-[14px] sm:text-[16px] font-medium text-white">Phone</label>
-                <input
-                  type="tel"
-                  placeholder="Enter Phone Number"
+              <div className="flex flex-col gap-1.5">
+                <label className="text-[13px] sm:text-[14px] font-semibold text-white">Phone</label>
+                <input 
+                  type="text" 
+                  placeholder="Enter Phone Number" 
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="bg-[#141414] border border-[#262626] rounded-[8px] px-4 py-3 sm:py-4 text-white text-[14px] sm:text-[16px] placeholder-[#666666] focus:outline-none focus:border-[#703BF7]"
+                  className="bg-[#1A1A1A] border border-[#262626] rounded-[8px] px-3.5 py-3 text-white placeholder-[#666666] text-[13px] sm:text-[14px] font-medium outline-none focus:border-[#703BF7] transition"
                   required
                 />
               </div>
             </div>
 
-            {/* Selected Property Field (Readonly style) */}
-            <div className="flex flex-col gap-2">
-              <label className="text-[14px] sm:text-[16px] font-medium text-white">Selected Property</label>
-              <div className="relative flex items-center bg-[#141414] border border-[#262626] rounded-[8px] px-4 py-3 sm:py-4 text-[#E4E4E7] text-[16px] sm:text-[20px]">
-                <span className="truncate pr-8">{propertyName}, {propertyLocation}</span>
-                <MapPin className="absolute right-4 w-5 h-5 text-[#999999]" />
+            {/* Row 3: Selected Property */}
+            <div className="flex flex-col gap-1.5">
+              <label className="text-[13px] sm:text-[14px] font-semibold text-white">Selected Property</label>
+              <div className="relative flex items-center">
+                <input 
+                  type="text" 
+                  readOnly 
+                  value={`${propertyName}, ${propertyLocation}`}
+                  className="w-full bg-[#1A1A1A] border border-[#262626] rounded-[8px] px-3.5 py-3 text-white text-[13px] sm:text-[14px] font-medium outline-none cursor-default"
+                />
+                <MapPin className="absolute right-3.5 w-4 h-4 text-[#999999] pointer-events-none" />
               </div>
             </div>
 
-            {/* Message Textarea */}
-            <div className="flex flex-col gap-2">
-              <label className="text-[14px] sm:text-[16px] font-medium text-white">Message</label>
-              <textarea
-                placeholder="Enter your Message here..."
+            {/* Row 4: Message Textarea */}
+            <div className="flex flex-col gap-1.5">
+              <label className="text-[13px] sm:text-[14px] font-semibold text-white">Message</label>
+              <textarea 
+                placeholder="Enter your Message here.." 
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                rows={5}
-                className="bg-[#141414] border border-[#262626] rounded-[8px] p-4 text-white text-[14px] sm:text-[16px] placeholder-[#666666] focus:outline-none focus:border-[#703BF7] resize-none h-[130px] lg:h-[170px]"
+                className="w-full h-[90px] sm:h-[110px] bg-[#1A1A1A] border border-[#262626] rounded-[8px] p-3.5 text-white placeholder-[#666666] text-[13px] sm:text-[14px] font-medium outline-none focus:border-[#703BF7] transition resize-none"
               />
             </div>
 
-            {/* Bottom Row: Custom Checkbox + Submit Button */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 pt-2">
-              
-              {/* Custom Checkbox */}
+            {/* Row 5: Checkbox & Send Button */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
               <div 
                 onClick={() => setAgreed(!agreed)}
-                className="flex items-center gap-3 cursor-pointer select-none"
+                className="flex items-center gap-2.5 cursor-pointer select-none"
               >
-                <div className={`w-6 h-6 rounded-[6px] border border-[#262626] bg-[#141414] flex items-center justify-center transition-colors ${agreed ? "border-[#703BF7] bg-[#703BF7]/20" : ""}`}>
-                  {agreed && <Check className="w-4 h-4 text-[#703BF7]" />}
+                <div className={`w-5 h-5 rounded-[4px] bg-[#1A1A1A] border border-[#262626] flex items-center justify-center transition shrink-0 ${agreed ? "border-[#703BF7] bg-[#703BF7]" : ""}`}>
+                  {agreed && <Check className="w-3.5 h-3.5 text-white stroke-[3]" />}
                 </div>
-                <span className="text-[14px] text-[#999999] font-medium">
-                  I agree with Terms of Use and Privacy Policy
+                <span className="text-[13px] sm:text-[14px] font-medium text-[#999999]">
+                  I agree with <span className="text-white underline">Terms of Use</span> and <span className="text-white underline">Privacy Policy</span>
                 </span>
               </div>
 
-              {/* Submit Button */}
-              <button
+              <button 
                 type="submit"
-                className="w-full sm:w-auto bg-[#703BF7] hover:bg-[#5e31d4] text-white text-[14px] sm:text-[16px] font-medium rounded-[8px] py-[16px] px-6 sm:px-[46px] transition-colors text-center"
+                className="w-full sm:w-auto bg-[#703BF7] hover:bg-[#5e31d4] transition text-white rounded-[8px] px-6 py-3 text-[13px] sm:text-[14px] font-medium text-center shrink-0 shadow-md"
               >
                 Send Your Message
               </button>
-
             </div>
-
+            
             {submitted && (
               <p className="text-green-400 text-sm font-medium text-center">
                 Thank you! Your inquiry has been sent successfully.

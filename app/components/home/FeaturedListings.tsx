@@ -5,8 +5,10 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Bed, Bath, Building2, ArrowLeft, ArrowRight } from "lucide-react";
+import { urlForImage } from "@/sanity/lib/image";
+import type { SanityProperty } from "@/sanity/lib/queries";
 
-const allProperties = [
+const defaultProperties = [
   {
     id: "1",
     title: "Seaside Serenity Villa",
@@ -69,10 +71,35 @@ const allProperties = [
   },
 ];
 
-export default function FeaturedListings() {
+interface FeaturedListingsProps {
+  sanityProperties?: SanityProperty[];
+  soldIds?: string[];
+}
+
+export default function FeaturedListings({ sanityProperties, soldIds = [] }: FeaturedListingsProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const itemsPerPage = 3;
-  const totalPages = Math.ceil(allProperties.length / itemsPerPage);
+
+  const fallbackProperties = defaultProperties.filter(
+    (p) => !soldIds.includes(p.id) && !soldIds.includes(p.title)
+  );
+
+  // Use dynamic Sanity properties if available, otherwise seamlessly fallback to default mock array
+  const displayProperties =
+    sanityProperties && sanityProperties.length > 0
+      ? sanityProperties.map((p, idx) => ({
+          id: p._id,
+          title: p.title,
+          description: p.description,
+          beds: p.bedrooms || "04-Bedroom",
+          baths: p.bathrooms || "03-Bathroom",
+          type: p.propertyType || "Villa",
+          price: typeof p.price === "number" ? `$${p.price.toLocaleString()}` : String(p.price),
+          image: p.images?.[0] ? urlForImage(p.images[0])?.url() || "/images/house1.png" : defaultProperties[idx % defaultProperties.length].image,
+        }))
+      : fallbackProperties;
+
+  const totalPages = Math.max(1, Math.ceil(displayProperties.length / itemsPerPage));
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev === 0 ? totalPages - 1 : prev - 1));
@@ -82,58 +109,58 @@ export default function FeaturedListings() {
     setCurrentIndex((prev) => (prev === totalPages - 1 ? 0 : prev + 1));
   };
 
-  const currentProperties = allProperties.slice(
+  const currentProperties = displayProperties.slice(
     currentIndex * itemsPerPage,
     (currentIndex + 1) * itemsPerPage
   );
 
   return (
-    <section className="w-full bg-[#141414] text-white py-16 lg:py-20 px-6 sm:px-10 lg:px-16">
-      <div className="max-w-[1440px] mx-auto space-y-12">
-        
+    <section className="w-full bg-[#141414] text-white py-12 lg:py-16 px-4 sm:px-8 lg:px-12">
+      <div className="max-w-[1360px] mx-auto space-y-10">
         {/* Header Row */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div className="space-y-2 max-w-3xl">
-            <h2 className="text-[32px] sm:text-[38px] lg:text-[42px] font-semibold tracking-tight text-white">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-5">
+          <div className="space-y-1.5 max-w-3xl">
+            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-semibold tracking-tight text-white">
               Featured Properties
             </h2>
-            <p className="text-[15px] lg:text-[17px] font-medium text-[#999999] leading-relaxed">
-              Explore our handpicked selection of featured properties. Each listing offers a glimpse into exceptional homes and investments available through Estatein. Click &quot;View Details&quot; for more information.
+            <p className="text-sm lg:text-[15px] font-medium text-[#999999] leading-relaxed">
+              Explore our handpicked selection of featured properties. Each listing offers a glimpse into exceptional homes and investments available through Estatein.
             </p>
           </div>
 
           <Link
             href="/properties"
-            className="px-6 py-[16px] rounded-[10px] bg-[#1A1A1A] border border-[#262626] text-white font-medium text-[15px] hover:bg-[#222222] transition whitespace-nowrap self-start md:self-auto shadow-sm"
+            className="px-5 py-3 rounded-[10px] bg-[#1A1A1A] border border-[#262626] text-white font-medium text-[14px] hover:bg-[#222222] transition whitespace-nowrap self-start md:self-auto shadow-sm"
           >
             View All Properties
           </Link>
         </div>
 
         {/* Property Cards Grid (3 across) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
           {currentProperties.map((property) => (
             <div
               key={property.id}
-              className="bg-[#141414] border border-[#262626] rounded-[12px] p-6 lg:p-8 flex flex-col justify-between space-y-5 hover:border-[#703BF7] transition-all shadow-md"
+              className="bg-[#141414] border border-[#262626] rounded-[12px] p-4 sm:p-4.5 flex flex-col justify-between space-y-3 hover:border-[#703BF7] transition-all shadow-md group"
             >
-              <div className="space-y-5">
-                {/* Image */}
-                <div className="relative w-full h-[260px] lg:h-[280px] rounded-[10px] overflow-hidden bg-[#1A1A1A]">
+              <div className="space-y-3">
+                {/* Horizontal Property Image */}
+                <div className="relative w-full h-[120px] sm:h-[125px] lg:h-[130px] rounded-[8px] overflow-hidden bg-[#1A1A1A]">
                   <Image
                     src={property.image}
                     alt={property.title}
                     fill
-                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
 
                 {/* Title & Description */}
-                <div className="space-y-2">
-                  <h3 className="text-[20px] lg:text-[22px] font-semibold text-white tracking-wide">
+                <div className="space-y-1">
+                  <h3 className="text-[15px] sm:text-[16px] lg:text-[17px] font-semibold text-white tracking-tight">
                     {property.title}
                   </h3>
-                  <p className="text-[15px] lg:text-[16px] font-medium text-[#999999] leading-relaxed line-clamp-2">
+                  <p className="text-[12px] sm:text-[12.5px] lg:text-[13px] font-medium text-[#999999] leading-snug line-clamp-2">
                     {property.description}{" "}
                     <button className="text-white underline underline-offset-4 hover:text-[#A685FA] transition inline-block ml-1">
                       Read More
@@ -142,32 +169,32 @@ export default function FeaturedListings() {
                 </div>
 
                 {/* Tag Pills */}
-                <div className="flex flex-wrap gap-2 pt-1">
-                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-[28px] bg-[#1A1A1A] border border-[#262626] text-[13px] lg:text-[14px] font-medium text-white">
-                    <Bed className="w-4 h-4 text-[#703BF7]" />
+                <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
+                  <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#1A1A1A] border border-[#262626] text-[11px] sm:text-[11.5px] font-medium text-white">
+                    <Bed className="w-3 h-3 text-[#703BF7]" />
                     <span>{property.beds}</span>
                   </div>
-                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-[28px] bg-[#1A1A1A] border border-[#262626] text-[13px] lg:text-[14px] font-medium text-white">
-                    <Bath className="w-4 h-4 text-[#703BF7]" />
+                  <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#1A1A1A] border border-[#262626] text-[11px] sm:text-[11.5px] font-medium text-white">
+                    <Bath className="w-3 h-3 text-[#703BF7]" />
                     <span>{property.baths}</span>
                   </div>
-                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-[28px] bg-[#1A1A1A] border border-[#262626] text-[13px] lg:text-[14px] font-medium text-white">
-                    <Building2 className="w-4 h-4 text-[#703BF7]" />
+                  <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#1A1A1A] border border-[#262626] text-[11px] sm:text-[11.5px] font-medium text-white">
+                    <Building2 className="w-3 h-3 text-[#703BF7]" />
                     <span>{property.type}</span>
                   </div>
                 </div>
               </div>
 
               {/* Price Block & Action Button */}
-              <div className="pt-5 border-t border-[#262626] flex items-center justify-between gap-3">
+              <div className="pt-3 border-t border-[#262626] flex items-center justify-between gap-3">
                 <div>
-                  <p className="text-[15px] lg:text-[16px] font-medium text-[#999999]">Price</p>
-                  <p className="text-[20px] lg:text-[22px] font-semibold text-white">{property.price}</p>
+                  <p className="text-[11px] font-medium text-[#999999]">Price</p>
+                  <p className="text-[15px] sm:text-[16px] lg:text-[17px] font-bold text-white tracking-tight">{property.price}</p>
                 </div>
 
                 <Link
                   href={`/propertydetails/${property.id}`}
-                  className="px-4 lg:px-5 py-3.5 rounded-[10px] bg-[#703BF7] text-white font-medium text-[14px] lg:text-[15px] hover:bg-[#5e31d4] transition shadow-lg shadow-[#703BF7]/30 text-center whitespace-nowrap"
+                  className="px-3.5 py-2 rounded-[6px] bg-[#703BF7] hover:bg-[#5e31d4] text-white font-medium text-[12px] sm:text-[12.5px] transition shadow-md text-center whitespace-nowrap"
                 >
                   View Property Details
                 </Link>
@@ -177,30 +204,29 @@ export default function FeaturedListings() {
         </div>
 
         {/* Pagination Row */}
-        <div className="pt-6 border-t border-[#262626] flex items-center justify-between">
-          <div className="text-[16px] lg:text-[18px] font-medium">
+        <div className="pt-5 border-t border-[#262626] flex items-center justify-between">
+          <div className="text-[14px] lg:text-[15px] font-medium">
             <span className="text-white">0{currentIndex + 1}</span>
             <span className="text-[#999999]"> of 0{totalPages}</span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <button
               onClick={handlePrev}
-              className="w-11 h-11 rounded-full border border-[#262626] bg-[#1A1A1A] hover:bg-[#222222] flex items-center justify-center text-white transition shadow-sm"
+              className="w-10 h-10 rounded-full border border-[#262626] bg-[#1A1A1A] hover:bg-[#222222] flex items-center justify-center text-white transition shadow-sm"
               aria-label="Previous properties"
             >
               <ArrowLeft className="w-4 h-4" />
             </button>
             <button
               onClick={handleNext}
-              className="w-11 h-11 rounded-full border border-[#262626] bg-[#1A1A1A] hover:bg-[#222222] flex items-center justify-center text-white transition shadow-sm"
+              className="w-10 h-10 rounded-full border border-[#262626] bg-[#1A1A1A] hover:bg-[#222222] flex items-center justify-center text-white transition shadow-sm"
               aria-label="Next properties"
             >
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </div>
-
       </div>
     </section>
   );
